@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Resistencias de 4 Bandas</title>
+    <link rel="stylesheet" href="calculadorastyle.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Pestañas superiores -->
+      <div class="tabs-container">
+        <div class="tabs">
+          <div class="tab active">4 Bandas</div>
+          <div class="tab">5 Bandas</div>
+          <div class="tab">6 Bandas</div>
+        </div>
+        <!-- Botón que abre el modal -->
+        <button id="btn-open-modal" class="btn-instructions">
+          Instrucciones y diagrama
+        </button>
+      </div>
+
+      <!-- Contenedor principal de la calculadora -->
+      <div class="calculator-content">
+        <!-- Lado Izquierdo: Gráfico y Controles -->
+        <div class="resistor-section">
+          <div class="resistor-graphic">
+            <div class="terminal-wire"></div>
+            <div class="resistor-cap"></div>
+            <div class="resistor-body">
+              <div id="band1" class="band"></div>
+              <div id="band2" class="band"></div>
+              <div id="band3" class="band"></div>
+              <div id="band4" class="band"></div>
+            </div>
+            <div class="resistor-cap"></div>
+            <div class="terminal-wire"></div>
+          </div>
+
+          <div class="controls-grid">
+            <div class="control-column">
+              <div class="indicator-line"></div>
+              <div class="custom-dropdown" id="dropdown1">
+                <div class="dropdown-trigger" id="trigger1">1</div>
+                <div class="dropdown-menu-list" id="menu1"></div>
+              </div>
+            </div>
+            <div class="control-column">
+              <div class="indicator-line"></div>
+              <div class="custom-dropdown" id="dropdown2">
+                <div class="dropdown-trigger" id="trigger2">2</div>
+                <div class="dropdown-menu-list" id="menu2"></div>
+              </div>
+            </div>
+            <div class="control-column">
+              <div class="indicator-line"></div>
+              <div class="custom-dropdown" id="dropdown3">
+                <div class="dropdown-trigger" id="trigger3">×10 kΩ</div>
+                <div class="dropdown-menu-list" id="menu3"></div>
+              </div>
+            </div>
+            <div class="control-column">
+              <div class="indicator-line"></div>
+              <div class="custom-dropdown" id="dropdown4">
+                <div class="dropdown-trigger" id="trigger4">5%</div>
+                <div class="dropdown-menu-list" id="menu4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado Derecho: Panel de Resultados -->
+        <div class="results-section">
+          <div class="result-single-line">
+            Valor de la resistencia: <span id="text-ohms">120k Ohms</span>
+            <span id="text-tolerance">5%</span>
+          </div>
+          <div class="input-box-container">
+            <div class="input-label">Resistance value</div>
+            <div class="input-group">
+              <input
+                type="number"
+                id="num-input"
+                class="value-input"
+                value="120"
+              />
+              <div class="unit-addon">
+                <select id="unit-select" class="unit-dropdown">
+                  <option value="1">Ω</option>
+                  <option value="1000" selected>kΩ</option>
+                  <option value="1000000">MΩ</option>
+                  <option value="1000000000">GΩ</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- --- VENTANA EMERGENTE (MODAL POP-UP) --- -->
+    <div id="instruction-modal" class="modal-overlay">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>Instrucciones y diagrama</h2>
+          <span id="modal-close-x" class="modal-close-btn">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p class="modal-text">
+            Esta herramienta se utiliza para decodificar información para las
+            resistencias con conductores axiales en una banda de colores.
+            Seleccione la cantidad de bandas y, luego, sus colores para
+            determinar el valor y la tolerancia de las resistencias.
+          </p>
+          <!-- Renderiza tu imagen local chart.jpg -->
+          <div class="modal-image-container">
+            <img
+              src="chart.jpg"
+              alt="Diagrama de código de colores de resistencias"
+              class="modal-image"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="modal-continue-btn" class="btn-continue">
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="calculadora.js"></script>
+  </body>
+</html>
